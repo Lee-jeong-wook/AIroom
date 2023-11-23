@@ -22,7 +22,7 @@ const sendHandler = () => {
         endTime: endTime.value
     }
     socket.emit('chatting', param);
-    fetch('http://localhost:3000//list', {
+    fetch('/list', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
