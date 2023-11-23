@@ -14,9 +14,9 @@ const home = require('./src/routes/home');
 app.set('views', "./src/views");
 app.set('view engine', 'ejs');
 // 미들웨어
-app.use(express.static(`${__dirname}/src/public`))
-const socketPath = '/path/to/socket.io-client';
-app.use(socketPath, express.static(path.join(__dirname, 'node_modules', 'socket.io-client', 'dist')));
+app.use(express.static(`${__dirname}/src`))
+// const socketPath = '/path/to/socket.io-client';
+// app.use(socketPath, express.static(path.join(__dirname, 'node_modules', 'socket.io-client', 'dist')));
 app.use(bodyParser.json());
 // 인코딩 위함
 app.use(bodyParser.urlencoded({extended: true}));
@@ -38,7 +38,7 @@ io.on('connection', (socket)=>{
     })
 })
 
-io.path('/socket.io');
+// io.path('/socket.io');
 
 
 module.exports = server;
