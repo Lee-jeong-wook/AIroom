@@ -27,9 +27,14 @@ app.use('/', home);
 io.on('connection', (socket)=>{
     console.log('연결');
     socket.on('chatting', (data)=>{
-        const {name, msg} = data;
+        const {            
+            id,
+            StudentID, 
+            name, 
+            startTime, 
+            endTime} = data;
         io.emit('chatting', {
-            id, 
+            id,
             StudentID, 
             name, 
             startTime, 
