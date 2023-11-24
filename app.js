@@ -15,8 +15,6 @@ app.set('views', "./src/views");
 app.set('view engine', 'ejs');
 // 미들웨어
 app.use(express.static(`${__dirname}/src`))
-// const socketPath = '/path/to/socket.io-client';
-// app.use(socketPath, express.static(path.join(__dirname, 'node_modules', 'socket.io-client', 'dist')));
 app.use(bodyParser.json());
 // 인코딩 위함
 app.use(bodyParser.urlencoded({extended: true}));
@@ -27,23 +25,10 @@ app.use('/', home);
 io.on('connection', (socket)=>{
     console.log('연결');
     socket.on('chatting', (data)=>{
-        const {            
-            id,
-            StudentID, 
-            name, 
-            startTime, 
-            endTime} = data;
-        io.emit('chatting', {
-            id,
-            StudentID, 
-            name, 
-            startTime, 
-            endTime
-        })
+        const clientData = data;
+        io.emit('chatting', clientData)
     })
 })
-
-// io.path('/socket.io');
 
 
 module.exports = server;
