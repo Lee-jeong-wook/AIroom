@@ -13,6 +13,31 @@ socket.on('connect', () => {
     console.log('서버와 연결 성공');
 });
 
+const editHandler = () => {
+    const param = {
+        id,
+        StudentID,
+        name,
+        endTime,
+        isEnd
+    }
+    fetch('/edit', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            param: param,
+        }),
+    })
+    .then((res) => {
+        return res.json();
+    })
+    .then((res) => {
+        console.log(res.data);
+    });
+}
+
 const sendHandler = () => {
     console.log(name.length);
     let param = [];

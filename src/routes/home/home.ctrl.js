@@ -13,6 +13,11 @@ const process = {
         const data = req.body;
         console.log(data);
         return res.json({data : data.param});
+    },
+    edit : (req, res) => {
+        const data = req.body;
+        console.log(data);
+        return res.json({data : data.param});
     }
 };
 
