@@ -6,6 +6,7 @@ const name = document.querySelectorAll('.name');
 const startTime = document.querySelectorAll('.start');
 const endTime = document.querySelectorAll('.end');
 const sendBtn = document.querySelector('.button');
+const today = new Date();
 
 console.log('hi');
 
@@ -15,7 +16,6 @@ socket.on('connect', () => {
 
 const editHandler = () => {
     const param = {
-        id,
         StudentID,
         name,
         endTime,
@@ -48,10 +48,12 @@ const sendHandler = () => {
             name: name[i].value,
             startTime: startTime[i].value,
             endTime: endTime[i].value,
-            isLast : false
+            isLast : false,
+            date: today.getDay()
         });
     }
     socket.emit('chatting', param);
+    console.log(param);
     fetch('/list', {
         method: 'POST',
         headers: {

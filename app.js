@@ -7,8 +7,8 @@ const server = require('http').createServer(app);
 const path = require("path");
 const socketIO = require('socket.io');
 const io = socketIO(server);
-import dotenv from "dotenv";
-dotenv.config();
+// import dotenv from "dotenv";
+// dotenv.config();
 
 
 const home = require('./src/routes/home');
