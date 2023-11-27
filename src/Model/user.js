@@ -1,1 +1,14 @@
-class User {  constructor(name, age) {    this.name = name;    this.age = age;  }}
+const UserStorage = require('./userStorage')
+
+class User {  
+    constructor(body) {    
+        this.body = body;
+    }
+
+    getItems = () => {
+
+    }
+
+}
+
+export default User
