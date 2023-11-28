@@ -9,7 +9,7 @@ class UserStorage{
 
     static #addItem = async (data) => {
 
-        // const item = await firestoreDB.addDoc(firestoreDB.collection(db, 'AI-ROOM'), {...data})
+        const item = await firestoreDB.addDoc(firestoreDB.collection(db, 'AI-ROOM'), {...data})
 
     }
 
@@ -22,25 +22,30 @@ class UserStorage{
         // const item = await firestoreDB.updateDoc(firestoreDB.collection(db, 'AI-ROOM'), {...data})
     }
 
-    static #getItems = () => {
-
+    static #getItems = async () => {
+        // const item = await firestoreDB.updateDoc(firestoreDB.collection(db, 'AI-ROOM'), {...data})
     }
 
     static addItem = (data) => {
-        // return this.#addItem(data);
+        console.log(`${data} 가 값입니다~`)
+        data.forEach(element => {
+            console.log(element);
+            this.#addItem(element);
+        });
+        return {msg : "성공"}
     }
 
     static deleItem = async (data) => {
-        // return this.#deleteItems(data);
+        return this.#deleteItems(data);
     }
 
     static editItems = (data) => {
-        // return this.#editItems(data);
+        return this.#editItems(data);
     }
 
     static getItems = (date) => {
-        // this.#deleteItems(date);
-        // return this.#getItems();
+        this.#deleteItems(date);
+        return this.#getItems();
     }
 }
 

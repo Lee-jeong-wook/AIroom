@@ -18,7 +18,6 @@ const editHandler = () => {
     const param = {
         StudentID,
         endTime,
-        img
     }
     fetch('/edit', {
         method: 'POST',
