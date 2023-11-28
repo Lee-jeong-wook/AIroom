@@ -1,8 +1,9 @@
 "use strict";
 // const FirebaseApp = require("firebase/app");
-const firebase = require("../../db/db");
-const firestoreDB = require("firebase/firestore");
-const db = firestoreDB.getFirestore(firebase);
+// const firebase = require("../../db/db");
+// const firestoreDB = require("firebase/firestore");
+// const db = firestoreDB.getFirestore(firebase);
+const User = require('../../Model/user');
 
 const output = {
     home : (req, res) => {
@@ -18,17 +19,17 @@ const output = {
 //post방식으로 보낼 코드
 const process = {
     list : async (req, res) => {
-        try {    
-            const data = req.body.param;  
-            console.log({...data});
-            console.log(db);
+    //     try {    
+    //         const data = req.body.param;  
+    //         console.log({...data});
+    //         console.log(db);
             
-            const user = await firestoreDB.addDoc(firestoreDB.collection(db, 'AI-ROOM'), {...data})
+    //         const user = await firestoreDB.addDoc(firestoreDB.collection(db, 'AI-ROOM'), {...data})
 
-            console.log(user);
+    //         console.log(user);
 
-            res.send("Record saved successfully");  
-    } catch (error) {    console.log(error)  }
+    //         res.send("Record saved successfully");  
+    // } catch (error) {    console.log(error)  }
     },
     edit : (req, res) => {
         const data = req.body;

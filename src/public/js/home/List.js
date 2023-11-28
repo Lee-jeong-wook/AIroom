@@ -17,9 +17,8 @@ socket.on('connect', () => {
 const editHandler = () => {
     const param = {
         StudentID,
-        name,
         endTime,
-        isEnd
+        img
     }
     fetch('/edit', {
         method: 'POST',
