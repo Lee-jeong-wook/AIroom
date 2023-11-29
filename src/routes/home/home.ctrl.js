@@ -2,8 +2,9 @@
 const User = require('../../Model/user');
 
 const output = {
-    home : (req, res) => {
-        const today = new Date();
+    home : async (req, res) => {
+        const user = new User();
+        const result = await user.getItems();
         res.render('home/index')
     },
     list : (req, res) => {
