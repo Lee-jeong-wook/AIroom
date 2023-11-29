@@ -8,21 +8,22 @@ class UserStorage {
   }
 
   static #addItem = async (data) => {
-    const item = await firestoreDB.addDoc(firestoreDB.collection('AI-ROOM'), {...data});
+    const item = await firestoreDB.addDoc(firestoreDB.collection(db, 'AI-ROOM'), {...data});
   }
 
   static #deleteItems = async () => {
     try {
       const today = new Date();
       const todayDate = today.getDate();
-      const dbItems = await firestoreDB.getDocs(firestoreDB.collection('AI-ROOM'));
+      console.log('hi')
+      console.log(firestoreDB.collection(db, 'AI-ROOM'));
+      const dbItems = await firestoreDB.getDocs(firestoreDB.collection(db, 'AI-ROOM'));
 
       const deletions = [];
       dbItems.forEach((doc) => {
         const { date } = doc.data();
-        const documentDate = date.toDate().getDate();
 
-        if (documentDate !== todayDate) {
+        if (date !== todayDate) {
           deletions.push(doc.ref.delete());
         }
       });
@@ -39,7 +40,7 @@ class UserStorage {
   }
 
   static #getItems = async () => {
-    const dbItems = await firestoreDB.getDocs(firestoreDB.collection('AI-ROOM'));
+    const dbItems = await firestoreDB.getDocs(firestoreDB.collection(db,'AI-ROOM'));
   }
 
   static addItem = (data) => {
