@@ -9,28 +9,29 @@ class UserStorage {
 
   static #addItem = async (data) => {
     const item = await firestoreDB.addDoc(firestoreDB.collection(db, 'AI-ROOM'), {...data});
+    console.log(item);
   }
 
   static #deleteItems = async () => {
     try {
       const today = new Date();
       const todayDate = today.getDate();
-      console.log('hi')
-      console.log(firestoreDB.collection(db, 'AI-ROOM'));
       const dbItems = await firestoreDB.getDocs(firestoreDB.collection(db, 'AI-ROOM'));
-
+  
       const deletions = [];
       dbItems.forEach((doc) => {
         const { date } = doc.data();
-
+        console.log(date)
+  
         if (date !== todayDate) {
-          deletions.push(doc.ref.delete());
+          deletions.push(firestoreDB.deleteDoc(doc.ref));
         }
       });
-      console.log(deletions);
+  
+    //   console.log(deletions);
       await Promise.all(deletions);
     } catch (err) {
-      console.error('Error:', err);
+      console.error('오류:', err);
     }
   }
 
@@ -41,6 +42,9 @@ class UserStorage {
 
   static #getItems = async () => {
     const dbItems = await firestoreDB.getDocs(firestoreDB.collection(db,'AI-ROOM'));
+    dbItems.forEach((doc)=> {
+        console.log(doc.data())
+    })
   }
 
   static addItem = (data) => {
@@ -49,10 +53,6 @@ class UserStorage {
       this.#addItem(element);
     });
     return { msg: "성공" };
-  }
-
-  static deleteItem = async (data) => {
-    return this.#deleteItems(data);
   }
 
   static editItems = (data) => {
