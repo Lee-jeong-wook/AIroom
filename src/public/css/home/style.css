@@ -1,10 +1,83 @@
 *{
     margin: 0;
     padding: 0;
-    list-style: none;
-    box-sizing: border-box;
 }
-
-h1{
-    color: red;
+.head{
+    height: 110px;
+    background-color: white;
+}
+.head>h1{
+    margin: 50px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+    background-color: rgb(221, 239, 255);
+}
+.container-main{
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    height: 550px;
+    width: 1000px;
+    background-color: white;
+    box-shadow: 6px 10px 12px 0px rgb(102, 102, 102);
+}
+.main-list{
+    display: flex;
+    height: 100px;
+    width: 900px;
+    border-radius: 20px;
+    margin: 20px 0px 0px 0px;
+    background-color: rgb(209, 233, 255);
+    align-items: center;
+}
+.last-img{
+    display: block;
+    border-radius: 20px;
+    width: 350px;
+    height: 550px;
+    background-color: white;
+    position: relative;
+    left: 150px;
+    box-shadow: 0px 10px 12px 0px rgb(102, 102, 102);
+}
+.last-img-text{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+}
+.Student-ID{
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    height: 20px;
+}
+.file{
+    display: flex;
+    background-color: rgb(235, 235, 235);
+    width: 200px;
+    margin: 20px 0px 0px 70px;
+}
+.img{
+    height: 320px;
+    width: 250px;
+    margin: 25px 0px 0px 50px;
+    background-color: rgb(235, 235, 235);
+}
+.send{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 40px;
+    margin: 20px 0px 0px 100px;
+    background-color: rgb(235, 235, 235);
+}
+.change-img>a>img{
+    width: 80px;
+    height: 80px;
+    margin: 40px;
 }
