@@ -17,6 +17,7 @@ const output = {
 const process = {
     list : async (req, res) => {
         try {    
+            console.log(req.body);
             const data = req.body.param;  
             console.log({...data});
             const user = new User(data); 
@@ -26,11 +27,16 @@ const process = {
             res.send("Record saved successfully");  
     } catch (error) {    console.log(error)  }
     },
-    edit : (req, res) => {
-        const data = req.body;
+    edit : async (req, res) => {
+        try {    
+            const data = req.body.param;  
+            console.log({...data});
+            const user = new User(data); 
+            const result = await user.editItems();
+            location.reload();
 
-        console.log(data);
-        return res.json({data : data.param});
+            res.send("Record saved successfully");  
+    } catch (error) {    console.log(error)  }
     }
 };
 

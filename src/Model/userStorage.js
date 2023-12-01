@@ -36,15 +36,28 @@ class UserStorage {
   }
 
   static #editItems = async (data) => {
-    // date 받아오기
-    // const item = await firestoreDB.updateDoc(firestoreDB.collection('AI-ROOM'), {...data})
+    try {
+      const { StudentID } = data;
+      const dbItems = await this.#getItems();
+  
+      dbItems.forEach(async (doc) => {
+        const { docStudentID } = doc.data();
+        console.log(docStudentID);
+  
+        if (StudentID !== docStudentID) {
+          await firestoreDB.updateDoc(doc.ref, { ...data });
+          return;
+        }
+      });
+    } catch (err) {
+      console.error('오류:', err);
+    }
   }
+  
 
   static #getItems = async () => {
     const dbItems = await firestoreDB.getDocs(firestoreDB.collection(db,'AI-ROOM'));
-    dbItems.forEach((doc)=> {
-        console.log(doc.data())
-    })
+    return dbItems;
   }
 
   static addItem = (data) => {
