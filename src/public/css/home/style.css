@@ -17,8 +17,6 @@
     background-color: rgb(221, 239, 255);
 }
 .container-main{
-    display: flex;
-    justify-content: center;
     border-radius: 20px;
     height: 550px;
     width: 1000px;
@@ -76,8 +74,75 @@
     margin: 20px 0px 0px 100px;
     background-color: rgb(235, 235, 235);
 }
+.plan{
+    display: flex;
+}
 .change-img>a>img{
+    display: flex;
     width: 80px;
     height: 80px;
-    margin: 40px;
+    margin: 28px 0px 28px 50px;
+}
+.sub-plan{
+    display: flex;
+    align-items: center;
+    margin: 0px 5px 0px 30px;
+}
+.sub-student-id{
+    display: flex;
+    height: 35px;
+    margin: 0px 5px 0px 30px;
+}
+.sub-student-id>input{
+    font-size: 20px;
+    width: 170px;
+    margin: 0px 0px 0px 10px;
+}
+.sub-student-name{
+    display: flex;
+    height: 35px;
+    margin: 0px 5px 0px 30px;
+}
+.sub-student-name>input{
+    font-size: 20px;
+    width: 170px;
+    margin: 0px 0px 0px 10px;
+}
+.startTime{
+    display: flex;
+    height: 35px;
+    margin: 0px 5px 0px 30px;
+}
+.startTime>input{
+    font-size: 20px;
+    width: 170px;
+    margin: 0px 0px 0px 10px;
+}
+.lastTime{
+    display: flex;
+    height: 35px;
+    margin: 0px 5px 0px 30px;
+}
+.lastTime>input{
+    font-size: 20px;
+    width: 170px;
+    margin: 0px 0px 0px 10px;
+}
+.sup-add-img{
+    display: flex;
+    align-items: center;
+}
+.sub-add-img>a>img{
+    width: 50px;
+    height: 50px;
+    margin: 0px 0px 0px 100px;
+}
+.sup-send{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+    width: 150px;
+    height: 40px;
+    margin: 0px 0px 0px 100px;
 }
