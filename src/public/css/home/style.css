@@ -72,14 +72,10 @@
     margin: 25px 0px 0px 50px;
     background-color: rgb(235, 235, 235);
 }
-.send{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 150px;
+.send>button{
+    width: 170px;
     height: 40px;
-    margin: 20px 0px 0px 100px;
-    background-color: rgb(235, 235, 235);
+    margin: 25px 0px 0px 90px;
 }
 .plan{
     display: flex;
@@ -144,7 +140,7 @@
     height: 50px;
     margin: 0px 0px 0px 100px;
 }
-.sup-send{
+.sup-send>button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -163,12 +159,30 @@
     .last-img{
         display: none;
     }
+    .change-img>a>img{
+        width: 50px;
+        height: 50px;
+        margin: 30px 0px 0px 30px;
+    }
     .head>h2{
         display: flex;
     }
     .sub-plan{
         margin: 30px 0px 0px 0px;
         display: block;
+    }
+    .sub-add-img{
+        width: 100px;
+        position: absolute;
+        right: 100px;
+        bottom: 20px;
+    }
+    .sub-add-img>a>img{
+        width: 40px;
+        height: 40px;
+    }
+    .sup-send{
+        margin: 15px 0px 0px 20px;
     }
     .sub-add-img>a>img{
         margin: 5px 0px 0px 20px;
