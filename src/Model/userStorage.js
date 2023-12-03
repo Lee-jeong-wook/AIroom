@@ -2,19 +2,22 @@ const firebase = require("../db/db");
 const firestoreDB = require("firebase/firestore");
 const db = firestoreDB.getFirestore(firebase);
 
-/**
- * 주석
- */
 class UserStorage {
   constructor(body) {
     this.body = body;
   }
-
+  /**
+   * 
+   * @param {*} data 들어온 정보를 직접 DB에 ADD 시키는 private function
+   */
   static #addItem = async (data) => {
     const item = await firestoreDB.addDoc(firestoreDB.collection(db, 'AI-ROOM'), {...data});
     console.log(item);
   }
 
+  /**
+   * 오늘의 날짜를 구해서 오늘 날짜와 맞지 않다면 삭제시키는 private function
+   */
   static #deleteItems = async () => {
     try {
       const today = new Date();
@@ -38,15 +41,43 @@ class UserStorage {
     }
   }
 
+  /**
+   * @param {*} data data를 받고 학번을 추출한 다음 getItems로 모든 현재 DB에 있는 정보를 가져와 비교하고 학번이 맞다면 변경하는 private function
+   */
   static #editItems = async (data) => {
-    // date 받아오기
-    // const item = await firestoreDB.updateDoc(firestoreDB.collection('AI-ROOM'), {...data})
+    try {
+      const { StudentID } = data;
+      const dbItems = await this.#getItems();
+  
+      dbItems.forEach(async (doc) => {
+        const { docStudentID } = doc.data();
+        console.log(docStudentID);
+  
+        if (StudentID !== docStudentID) {
+          await firestoreDB.updateDoc(doc.ref, { ...data });
+          return;
+        }
+      });
+    } catch (err) {
+      console.error('오류:', err);
+    }
   }
-
+  
+  /**
+   * DB에 있는 모든 정보를 반환하는 private function
+   */
   static #getItems = async () => {
     const dbItems = await firestoreDB.getDocs(firestoreDB.collection(db,'AI-ROOM'));
+    dbItems.forEach((doc)=> {
+        console.log(doc.data())
+    })
   }
 
+  /**
+   * 
+   * @param {*} data 
+   * @returns 
+   */
   static addItem = (data) => {
     data.forEach(element => {
       console.log(element);
