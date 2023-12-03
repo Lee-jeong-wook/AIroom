@@ -2,6 +2,9 @@ const firebase = require("../db/db");
 const firestoreDB = require("firebase/firestore");
 const db = firestoreDB.getFirestore(firebase);
 
+/**
+ * 주석
+ */
 class UserStorage {
   constructor(body) {
     this.body = body;
@@ -42,9 +45,6 @@ class UserStorage {
 
   static #getItems = async () => {
     const dbItems = await firestoreDB.getDocs(firestoreDB.collection(db,'AI-ROOM'));
-    dbItems.forEach((doc)=> {
-        console.log(doc.data())
-    })
   }
 
   static addItem = (data) => {
