@@ -6,12 +6,18 @@ class UserStorage {
   constructor(body) {
     this.body = body;
   }
-
+  /**
+   * 
+   * @param {*} data 들어온 정보를 직접 DB에 ADD 시키는 private function
+   */
   static #addItem = async (data) => {
     const item = await firestoreDB.addDoc(firestoreDB.collection(db, 'AI-ROOM'), {...data});
     console.log(item);
   }
 
+  /**
+   * 오늘의 날짜를 구해서 오늘 날짜와 맞지 않다면 삭제시키는 private function
+   */
   static #deleteItems = async () => {
     try {
       const today = new Date();
@@ -35,6 +41,9 @@ class UserStorage {
     }
   }
 
+  /**
+   * @param {*} data data를 받고 학번을 추출한 다음 getItems로 모든 현재 DB에 있는 정보를 가져와 비교하고 학번이 맞다면 변경하는 private function
+   */
   static #editItems = async (data) => {
     try {
       const { StudentID } = data;
@@ -54,12 +63,21 @@ class UserStorage {
     }
   }
   
-
+  /**
+   * DB에 있는 모든 정보를 반환하는 private function
+   */
   static #getItems = async () => {
     const dbItems = await firestoreDB.getDocs(firestoreDB.collection(db,'AI-ROOM'));
-    return dbItems;
+    dbItems.forEach((doc)=> {
+        console.log(doc.data())
+    })
   }
 
+  /**
+   * 
+   * @param {*} data 현재 등록하려는 모든 유저의 데이터를 받아서 foreach로 돌려서 private 부분 전달
+   * @returns 성공했다는 메세지 반환 예정
+   */
   static addItem = (data) => {
     data.forEach(element => {
       console.log(element);
@@ -67,11 +85,19 @@ class UserStorage {
     });
     return { msg: "성공" };
   }
-
+  /**
+   * 
+   * @param {*} data edit 하혀는 아이디, 끝나는 시간, 현재 끝나는지 private으로 보냄ㄴ
+   * @returns 
+   */
   static editItems = (data) => {
     return this.#editItems(data);
   }
 
+  /**
+   * 
+   * @returns get 요청을 받으면 어제 있던 data를 지우고 오늘 있던 data를 가져와서 반환함
+   */
   static getItems = () => {
     this.#deleteItems();
     return this.#getItems();
