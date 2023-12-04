@@ -37,6 +37,26 @@ const process = {
 
             res.send("Record saved successfully");  
     } catch (error) {    console.log(error)  }
+    },
+    image : async (req, res) => {
+        try {
+            console.log('hello');
+            const file = document.querySelector("#image").file[0];
+            const data = req.body.param;
+            console.log({...data});
+            
+            
+    } catch (error) {   console.log(error)};
+    },
+    users : async (req, res) => {
+        try {
+        const data = req.body.param;
+        console.log({...data});   
+        const result = await user.editItems();
+        location.reload();
+
+
+    } catch (error) {   console.log(error)};
     }
 };
 

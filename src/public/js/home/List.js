@@ -69,6 +69,51 @@ const sendHandler = () => {
     });
 }
 
+const imageHandler = () => {
+    
+    fetch("/image", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            param: param,
+        }),
+    })
+}
+
+const usersHandler = () => {
+    console.log(name.length);
+    let param = [];
+    for(let i = 0; i < name.length; i++) {
+        param.push({
+            id: Math.floor(Math.random() * 100000),
+            StudentID: StudentID[i].value,
+            name: name[i].value,
+            startTime: startTime[i].value,
+            endTime: endTime[i].value,
+            isLast: true,
+            data: today.getDay(),
+        });
+    }
+    fetch('/users', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            param: param,
+        }),
+    })
+    .then((res) => {
+        return res.json();
+    })
+    .then((res) => {
+        console.log(res.data);
+    });
+}
+
+
 sendBtn.addEventListener('click', sendHandler);
 
 socket.on('chatting', (data) => {

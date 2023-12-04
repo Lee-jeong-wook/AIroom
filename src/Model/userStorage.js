@@ -2,9 +2,17 @@ const firebase = require("../db/db");
 const firestoreDB = require("firebase/firestore");
 const db = firestoreDB.getFirestore(firebase);
 
+const storage = require("firebase/storage");
+
 class UserStorage {
   constructor(body) {
     this.body = body;
+  }
+  
+  static #addimg = async (data) => {
+    const storageRef = storage.ref();
+    const firestoredbImage = storage.child('image/');
+    const imgupload = firestoredbImage.put(data.file);
   }
 
   static #addItem = async (data) => {
@@ -58,6 +66,10 @@ class UserStorage {
   static #getItems = async () => {
     const dbItems = await firestoreDB.getDocs(firestoreDB.collection(db,'AI-ROOM'));
     return dbItems;
+  }
+
+  static addImg = (data) => {
+    return this.#addimg(data);
   }
 
   static addItem = (data) => {
