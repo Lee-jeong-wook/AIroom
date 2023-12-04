@@ -6,9 +6,6 @@ const output = {
         const user = new User();
         const result = await user.getItems();
         res.render('home/index')
-    },
-    list : (req, res) => {
-        res.send('hi');
     }
 }
 
