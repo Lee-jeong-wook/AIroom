@@ -21,6 +21,11 @@ body{
     display: none;
     text-decoration: noneo;
 }
+.head>a{
+    margin: 50px;
+    text-decoration: none;
+    display: none;
+}
 .container{
     display: flex;
     justify-content: center;
@@ -33,6 +38,7 @@ body{
     height: 550px;
     width: 1000px;
     background-color: white;
+    padding: 0px 0px 0px 50px;
     box-shadow: 6px 10px 12px 0px rgb(102, 102, 102);
 }
 .main-list{
