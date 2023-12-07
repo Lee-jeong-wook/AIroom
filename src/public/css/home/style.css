@@ -1,0 +1,212 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+}
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 110px;
+    background-color: white;
+}
+.head>h1{
+    margin: 50px;
+}
+.head>a{
+    margin: 50px;
+    color: black;
+    display: none;
+    text-decoration: noneo;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+    background-color: rgb(221, 239, 255);
+}
+.container-main{
+    border-radius: 20px;
+    height: 550px;
+    width: 1000px;
+    background-color: white;
+    box-shadow: 6px 10px 12px 0px rgb(102, 102, 102);
+}
+.main-list{
+    display: flex;
+    height: 100px;
+    width: 900px;
+    border-radius: 20px;
+    margin: 20px 0px 0px 0px;
+    background-color: rgb(209, 233, 255);
+    align-items: center;
+}
+.last-img{
+    display: block;
+    border-radius: 20px;
+    width: 350px;
+    height: 550px;
+    background-color: white;
+    position: relative;
+    left: 150px;
+    box-shadow: 0px 10px 12px 0px rgb(102, 102, 102);
+}
+.last-img-text{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+}
+.Student-ID{
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    height: 20px;
+}
+.file{
+    display: flex;
+    background-color: rgb(235, 235, 235);
+    width: 200px;
+    margin: 20px 0px 0px 70px;
+}
+.img{
+    height: 320px;
+    width: 250px;
+    margin: 25px 0px 0px 50px;
+    background-color: rgb(235, 235, 235);
+}
+.send>button{
+    width: 170px;
+    height: 40px;
+    margin: 25px 0px 0px 90px;
+}
+.plan{
+    display: flex;
+}
+.change-img>a>img{
+    display: flex;
+    width: 80px;
+    height: 80px;
+    margin: 28px 0px 28px 50px;
+}
+.sub-plan{
+    display: flex;
+    align-items: center;
+    margin: 0px 5px 0px 30px;
+}
+.sub-student-id{
+    display: flex;
+    height: 35px;
+    margin: 0px 5px 0px 30px;
+}
+.sub-student-id>input{
+    font-size: 20px;
+    width: 170px;
+    margin: 0px 0px 0px 10px;
+}
+.sub-student-name{
+    display: flex;
+    height: 35px;
+    margin: 0px 5px 0px 30px;
+}
+.sub-student-name>input{
+    font-size: 20px;
+    width: 170px;
+    margin: 0px 0px 0px 10px;
+}
+.startTime{
+    display: flex;
+    height: 35px;
+    margin: 0px 5px 0px 30px;
+}
+.startTime>input{
+    font-size: 20px;
+    width: 170px;
+    margin: 0px 0px 0px 10px;
+}
+.lastTime{
+    display: flex;
+    height: 35px;
+    margin: 0px 5px 0px 30px;
+}
+.lastTime>input{
+    font-size: 20px;
+    width: 170px;
+    margin: 0px 0px 0px 10px;
+}
+.sup-add-img{
+    display: flex;
+    align-items: center;
+}
+.sub-add-img>a>img{
+    width: 50px;
+    height: 50px;
+    margin: 0px 0px 0px 100px;
+}
+.sup-send>button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+    width: 150px;
+    height: 40px;
+    margin: 0px 0px 0px 100px;
+}
+/* 팝업 따로 */
+.your-css-class {
+  
+   position: fixed;
+   top: 45%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+/*x버튼*/
+.bottn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+} 
+@media (max-width: 700px) {
+    .container-main{
+        width: 400px;
+    }
+    .main-list{
+        width: 340px;
+    }
+    .last-img{
+        display: none;
+    }
+    .change-img>a>img{
+        width: 50px;
+        height: 50px;
+        margin: 30px 0px 0px 30px;
+    }
+    .head>a{
+        display: flex;
+    }
+    .sub-plan{
+        margin: 30px 0px 0px 0px;
+        display: block;
+    }
+    .sub-add-img{
+        width: 100px;
+        position: absolute;
+        right: 100px;
+        bottom: 20px;
+    }
+    .sub-add-img>a>img{
+        width: 40px;
+        height: 40px;
+    }
+    .sup-send{
+        margin: 15px 0px 0px 20px;
+    }
+    .sub-add-img>a>img{
+        margin: 5px 0px 0px 20px;
+    }
+}
