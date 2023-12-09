@@ -162,7 +162,6 @@ body{
 }
 /* 팝업 따로 */
 .your-css-class {
-  
    position: fixed;
    top: 45%;
    left: 50%;

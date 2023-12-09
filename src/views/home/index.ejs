@@ -16,33 +16,6 @@
         </header>
         <div class="container">
             <div class="container-main" style="overflow: auto">
-                <div class="main-list">
-
-                </div>
-                <div class="main-list">
-                    
-                </div>
-                <div class="main-list">
-                    
-                </div>
-                <div class="main-list">
-                    
-                </div>
-                <div class="main-list">
-                    
-                </div>
-                <div class="main-list">
-                    
-                </div>
-                <div class="main-list">
-                    
-                </div>
-                <div class="main-list">
-                    
-                </div>
-                <div class="main-list">
-                    
-                </div>
             </div>
             <div class="last-img">
                 <div class="last-img-text">
@@ -64,30 +37,29 @@
         </div>
         <div class="plan">
             <div class="change-img">
-                <a href="#"><img src="/img/change.png" alt="change-img"></a>
+                <a href="#">
+                    <i class="fa-solid fa-arrows-rotate" style="width: 50px; height: 50px; font-size: 50px; color: black;"></i>
+                </a>
             </div>
             <div class="sub-plan">
                 <div class="sub-student-id">
                     <h2>학번 :</h2>
-                    <input type="text">
+                    <input type="text" class="SID">
                 </div>
                 <div class="sub-student-name">
                     <h2>이름 :</h2>
-                    <input type="text">
+                    <input type="text" class="name">
                 </div>
                 <div class="startTime">
                     <h2>시작 시간 :</h2>
-                    <input type="time">
+                    <input type="time" class="start">
                 </div>
                 <div class="lastTime">
                     <h2>종료 시간 :</h2>
-                    <input type="time">
-                </div>
-                <div class="sub-add-img">
-                    <a href="#"><img src="/img/add.png" alt="add"></a>
+                    <input type="time" class="end">
                 </div>
                 <div class="sup-send">
-                    <button><h2>전송</h2></button>
+                    <button class="submit-button"><h2>전송</h2></button>
                 </div>
             </div>
         </div>
@@ -95,6 +67,7 @@
 </body>
 <!-- <script src="/socket.io/socket.io.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js"></script> -->
+    <script src="https://kit.fontawesome.com/16beda54c8.js" crossorigin="anonymous"></script>
     <script src="https://cdn.socket.io/socket.io-3.0.1.min.js" type="module"></script>
 <script type="module" src="/public/js/home/List.js" ></script>
 <script src="/public/js/home/script.js"></script>

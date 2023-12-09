@@ -5,8 +5,9 @@ const StudentID = document.querySelectorAll('.SID');
 const name = document.querySelectorAll('.name');
 const startTime = document.querySelectorAll('.start');
 const endTime = document.querySelectorAll('.end');
-const sendBtn = document.querySelector('.button');
+const sendBtn = document.querySelector('.submit-button');
 const today = new Date();
+const listContainer = document.querySelector('.container-main');
 
 console.log('hi');
 
@@ -34,6 +35,26 @@ const editHandler = () => {
     .then((res) => {
         console.log(res.data);
     });
+}
+
+const listHandler = (data) => {
+    console.log("hi");
+    const container = document.createElement('div');
+    container.classList.add("main-list");
+    const StudentID = document.createElement("span");
+    const StudentName = document.createElement("span");
+    const StudentStart = document.createElement("span");
+    const StudentEnd = document.createElement("span");
+    StudentID.innerText = data[0].StudentID;
+    StudentName.innerText = data[0].name;
+    StudentStart.innerText = data[0].startTime;
+    StudentEnd.innerText = data[0].endTime;
+
+    listContainer.appendChild(container);
+    container.appendChild(StudentID);
+    container.appendChild(StudentName);
+    container.appendChild(StudentStart);
+    container.appendChild(StudentEnd);
 }
 
 const sendHandler = () => {
@@ -119,4 +140,5 @@ sendBtn.addEventListener('click', sendHandler);
 socket.on('chatting', (data) => {
     const cleanData = JSON.parse(JSON.stringify(data));
     console.log('받은 데이터:', cleanData);
+    listHandler(cleanData)
 });
