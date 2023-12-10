@@ -49,6 +49,7 @@ body{
     margin: 20px 0px 0px 0px;
     background-color: rgb(209, 233, 255);
     align-items: center;
+    justify-content: space-around;
 }
 .last-img{
     display: block;
@@ -90,6 +91,25 @@ body{
 }
 .plan{
     display: flex;
+}
+.active > .sub-plan{
+    display: none;
+}
+.hidden-plan{
+    display: none;
+}
+.active > .hidden-plan {
+    display: flex;
+}
+.leave{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    color: white;
+    width: 150px;
+    height: 40px;
+    margin: 0px 0px 0px 100px;
 }
 .change-img>a>img{
     display: flex;
@@ -196,6 +216,9 @@ body{
     }
     .sub-plan{
         margin: 30px 0px 0px 0px;
+        display: block;
+    }
+    .active > .hidden-plan{
         display: block;
     }
     .sub-add-img{
