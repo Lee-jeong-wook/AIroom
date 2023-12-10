@@ -9,8 +9,6 @@ const output = {
     home : async (req, res) => {
         const user = new User();
         const results = await user.getItems();
-        console.log("hi");
-        console.log(results);
         res.render('home/index', {results})
     }
 }
@@ -25,12 +23,9 @@ const process = {
      */
     list : async (req, res) => {
         try {    
-            console.log(req.body);
             const data = req.body.param;  
-            console.log({...data});
             const user = new User(data); 
             const result = await user.setItems();
-            console.log(result);
 
             res.send("Record saved successfully");  
     } catch (error) {    console.log(error)  }
@@ -45,7 +40,6 @@ const process = {
             console.log({...data});
             const user = new User(data); 
             const result = await user.editItems();
-            location.reload();
 
             res.send("Record saved successfully");  
     } catch (error) {    console.log(error)  }

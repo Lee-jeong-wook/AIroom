@@ -61,14 +61,14 @@ class UserStorage {
    */
   static #editItems = async (data) => {
     try {
-      const { StudentID } = data;
-      const dbItems = await this.#getItems();
+      const { editID } = data;
+      const dbItems = await firestoreDB.getDocs(firestoreDB.collection(db, 'AI-ROOM'));
   
       dbItems.forEach(async (doc) => {
-        const { docStudentID } = doc.data();
-        console.log(docStudentID);
+        const { StudentID } = doc.data();
+        console.log(StudentID);
   
-        if (StudentID !== docStudentID) {
+        if (editID !== StudentID) {
           await firestoreDB.updateDoc(doc.ref, { ...data });
           return;
         }

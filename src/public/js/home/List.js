@@ -8,17 +8,35 @@ const endTime = document.querySelectorAll('.end');
 const sendBtn = document.querySelector('.submit-button');
 const today = new Date();
 const listContainer = document.querySelector('.container-main');
-
-console.log('hi');
+const editID = document.querySelector(".hidden-SID");
+const editTime = document.querySelector('.hidden-end');
+const leaveBtn = document.querySelector('.leave');
+const editBtn = document.querySelector('.edit-button');
 
 socket.on('connect', () => {
     console.log('서버와 연결 성공');
 });
 
-const editHandler = () => {
+editBtn.addEventListener('click', () => {
+    console.log("hi");
+    const data = {
+        editID : editID.value,
+        editTime : editTime.value
+    }
+    editHandler(data);
+})
+leaveBtn.addEventListener('click', () => {
+    const data = {
+        editID : editID.value,
+        editTime : today.getTime()
+    }
+    editHandler(data);
+})
+
+const editHandler = (data) => {
     const param = {
-        StudentID,
-        endTime,
+        StudentID : data.editID,
+        endTime: data.editTime,
     }
     fetch('/edit', {
         method: 'POST',
