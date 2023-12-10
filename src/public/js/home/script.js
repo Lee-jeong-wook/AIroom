@@ -8,7 +8,6 @@ const h1 = header.querySelector('h1');
 const h2 = header.querySelector('h2');
 const last = document.getElementsByClassName('last-img')[0];
 
-const changeImg = document.querySelector(".change-img");
 
 const closeButton = document.createElement('a');
 closeButton.href = '#';
@@ -17,6 +16,8 @@ closeButton.classList.add('bottn');
 
 last.appendChild(closeButton);
 
+
+const changeImg = document.querySelector(".change-img");
 let isChange = false;
 changeImg.addEventListener("click", () => {
     console.log(isChange);
@@ -27,6 +28,25 @@ changeImg.addEventListener("click", () => {
     }
     isChange = !isChange;
 })
+
+const endTimes = document.querySelectorAll('.user-end')
+const endHandler = () => {
+    console.log("hi");
+    const day = new Date();
+    const curTime = `${day.getHours()}:${day.getMinutes()}`;
+    const comTime = curTime.split(":");
+    endTimes.forEach((endtime) => {
+        const userTime = endtime.innerText.split(":");
+        console.log(comTime);
+        console.log(userTime);
+        if (comTime[0] < userTime[0]) return;
+        console.log("work");
+        if (comTime[1] < userTime[1]) return;
+        console.log("work");
+        endtime.parentElement.style.backgroundColor = "#ccc";
+    })
+}
+endHandler();
 
 h2.onclick = function (event) {
     event.stopPropagation();

@@ -28,8 +28,9 @@ editBtn.addEventListener('click', () => {
 leaveBtn.addEventListener('click', () => {
     const data = {
         editID : editID.value,
-        editTime : today.getTime()
+        editTime : `${today.getHours()}:${today.getMinutes()}`
     }
+    console.log(data.editTime);
     editHandler(data);
 })
 
@@ -51,7 +52,7 @@ const editHandler = (data) => {
         return res.json();
     })
     .then((res) => {
-        console.log(res.data);
+        window.location.reload();
     });
 }
 
