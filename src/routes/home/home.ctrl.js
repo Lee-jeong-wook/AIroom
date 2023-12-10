@@ -8,8 +8,10 @@ const output = {
      */
     home : async (req, res) => {
         const user = new User();
-        const result = await user.getItems();
-        res.render('home/index')
+        const results = await user.getItems();
+        console.log("hi");
+        console.log(results);
+        res.render('home/index', {results})
     }
 }
 

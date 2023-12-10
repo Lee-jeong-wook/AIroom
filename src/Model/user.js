@@ -10,6 +10,7 @@ class User {
      */
     getItems = async() => {
         const data = await UserStorage.getItems();
+        return data;
     }
 
     /**

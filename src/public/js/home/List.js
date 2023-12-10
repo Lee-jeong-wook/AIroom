@@ -68,7 +68,7 @@ const sendHandler = () => {
             startTime: startTime[i].value,
             endTime: endTime[i].value,
             isLast : false,
-            date: today.getDay()
+            date: today.getDate()
         });
     }
     socket.emit('chatting', param);

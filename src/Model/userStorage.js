@@ -26,6 +26,7 @@ class UserStorage {
   static #addItem = async (data) => {
     const item = await firestoreDB.addDoc(firestoreDB.collection(db, 'AI-ROOM'), {...data});
     console.log(item);
+    console.log("private 부분")
   }
 
   /**
@@ -41,6 +42,7 @@ class UserStorage {
       dbItems.forEach((doc) => {
         const { date } = doc.data();
         console.log(date)
+        console.log(todayDate);
   
         if (date !== todayDate) {
           deletions.push(firestoreDB.deleteDoc(doc.ref));
@@ -80,11 +82,21 @@ class UserStorage {
    * DB에 있는 모든 정보를 반환하는 private function
    */
   static #getItems = async () => {
-    const dbItems = await firestoreDB.getDocs(firestoreDB.collection(db,'AI-ROOM'));
-    dbItems.forEach((doc)=> {
-        console.log(doc.data())
-    })
-  }
+    try {
+        const dbItems = await firestoreDB.getDocs(firestoreDB.collection(db,'AI-ROOM'));
+        const itemsArray = dbItems.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() };
+        });
+  
+        console.log("Work");
+        console.log(itemsArray);
+  
+        return itemsArray;
+    } catch (err) {
+        console.error('오류:', err);
+        return []; // 오류 시 빈 배열 반환 또는 다른 적절한 처리
+    }
+}
 
   static addImg = (data) => {
     return this.#addimg(data);
@@ -96,6 +108,7 @@ class UserStorage {
    * @returns 성공했다는 메세지 반환 예정
    */
   static addItem = (data) => {
+    console.log("싱ㄹ행");
     data.forEach(element => {
       console.log(element);
       this.#addItem(element);

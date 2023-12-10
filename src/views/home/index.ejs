@@ -16,6 +16,14 @@
         </header>
         <div class="container">
             <div class="container-main" style="overflow: auto">
+                <% results.map((result) => { %>
+                    <div class="main-list">
+                        <span><%= result.StudentID %></span>
+                        <span><%= result.name %></span>
+                        <span><%= result.startTime %></span>
+                        <span><%= result.endTime %></span>
+                    </div>
+                <% }) %>
             </div>
             <div class="last-img">
                 <div class="last-img-text">
