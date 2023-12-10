@@ -47,7 +47,6 @@ const process = {
     image : async (req, res) => {
         try {
             console.log('hello');
-            const file = document.querySelector("#image").file[0];
             const data = req.body.param;
             console.log({...data});
             

@@ -6,16 +6,43 @@ const name = document.querySelectorAll('.name');
 const startTime = document.querySelectorAll('.start');
 const endTime = document.querySelectorAll('.end');
 const sendBtn = document.querySelector('.submit-button');
-const today = new Date();
 const listContainer = document.querySelector('.container-main');
 const editID = document.querySelector(".hidden-SID");
 const editTime = document.querySelector('.hidden-end');
 const leaveBtn = document.querySelector('.leave');
 const editBtn = document.querySelector('.edit-button');
+const file = document.querySelector('.img-file');
+const imgID = document.querySelector('.img-id');
+const imgBtn = document.querySelector('.img-btn');
+const today = new Date();
 
 socket.on('connect', () => {
     console.log('서버와 연결 성공');
 });
+
+imgBtn.addEventListener('click', () => {
+    console.log(file.value);
+    const param = {
+        img : file.value,
+        id : imgID.value
+    }
+    fetch('/image', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            param: param,
+        }),
+    })
+    .then((res) => {
+        return res.json();
+    })
+    .then((res) => {
+        console.log(res.data);
+    });
+})
+
 
 editBtn.addEventListener('click', () => {
     console.log("hi");

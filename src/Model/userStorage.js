@@ -68,7 +68,7 @@ class UserStorage {
         const { StudentID } = doc.data();
         console.log(StudentID);
   
-        if (editID !== StudentID) {
+        if (editID === StudentID) {
           await firestoreDB.updateDoc(doc.ref, { ...data });
           return;
         }
