@@ -37,11 +37,10 @@ const process = {
     edit : async (req, res) => {
         try {    
             const data = req.body.param;  
-            console.log({...data});
             const user = new User(data); 
             const result = await user.editItems();
 
-            res.send("Record saved successfully");  
+            res.json('{msg : "success"}')
     } catch (error) {    console.log(error)  }
     },
     image : async (req, res) => {

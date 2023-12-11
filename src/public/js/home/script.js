@@ -37,12 +37,8 @@ const endHandler = () => {
     const comTime = curTime.split(":");
     endTimes.forEach((endtime) => {
         const userTime = endtime.innerText.split(":");
-        console.log(comTime);
-        console.log(userTime);
         if (comTime[0] < userTime[0]) return;
-        console.log("work");
         if (comTime[1] < userTime[1]) return;
-        console.log("work");
         endtime.parentElement.style.backgroundColor = "#ccc";
     })
 }

@@ -45,7 +45,6 @@ imgBtn.addEventListener('click', () => {
 
 
 editBtn.addEventListener('click', () => {
-    console.log("hi");
     const data = {
         editID : editID.value,
         editTime : editTime.value
@@ -63,7 +62,7 @@ leaveBtn.addEventListener('click', () => {
 
 const editHandler = (data) => {
     const param = {
-        StudentID : data.editID,
+        editID : data.editID,
         endTime: data.editTime,
     }
     fetch('/edit', {
@@ -76,10 +75,8 @@ const editHandler = (data) => {
         }),
     })
     .then((res) => {
-        return res.json();
-    })
-    .then((res) => {
-        window.location.reload();
+        console.log("hi");
+        // window.location.reload();
     });
 }
 
