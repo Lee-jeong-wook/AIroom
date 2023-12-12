@@ -2,7 +2,9 @@ const firebase = require("../db/db");
 const firestoreDB = require("firebase/firestore");
 const db = firestoreDB.getFirestore(firebase);
 
-const storage = require("firebase/storage");
+const firebaseStorage = require("firebase/storage")
+const storage = firebaseStorage.getStorage();
+// const uploadImg = firebaseStorage.uploadBytes();
 
 class UserStorage {
   constructor(body) {
@@ -13,10 +15,11 @@ class UserStorage {
    * @param {*} data 뭐기 들어가여
    * 이런 기능을 합니다
    */
-  static #addimg = async (data) => {
-    const storageRef = storage.ref();
-    const firestoredbImage = storage.child('image/');
-    const imgupload = firestoredbImage.put(data.file);
+  static #uploadImg = async (data) => {
+    const lastRef = firebaseStorage.ref(storage, '/images' ,data.img);
+    firebaseStorage.uploadBytes(lastRef, data.img);
+    //https://www.youtube.com/watch?v=dp_6BMmyWyk 이미지 다운로드 참고
+    return;
   }
 
   /**
@@ -100,9 +103,13 @@ class UserStorage {
         return []; // 오류 시 빈 배열 반환 또는 다른 적절한 처리
     }
 }
-
-  static addImg = (data) => {
-    return this.#addimg(data);
+  /**
+   * 
+   * @param {*} data 날짜, 학번, 이미지를 받음
+   * @returns private 코드에 접근하여 storage에 추가시키도록 함
+   */
+  static uploadImg = (data) => {
+    return this.#uploadImg(data);
   }
 
   /**

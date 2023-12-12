@@ -11,5 +11,5 @@ router.get('/', ctrl.output.home);
 router.post('/list', ctrl.process.list)
 router.post('/edit', ctrl.process.edit)
 router.post('/image', ctrl.process.image)
-router.post("/users", ctrl.process.users)
+// router.post("/users", ctrl.process.users)
 module.exports= router;

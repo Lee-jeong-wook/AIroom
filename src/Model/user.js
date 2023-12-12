@@ -29,6 +29,14 @@ class User {
         const data = await UserStorage.editItems(client);
     }
 
+    /**
+     * 업로드할 이미지의 이름, 업로드 날짜, 학번을 보낸다
+     */
+    uploadImg = async () => {
+        const client = this.body;
+        const data = await UserStorage.uploadImg(client);
+    }
+
 }
 
 module.exports = User;

@@ -45,23 +45,22 @@ const process = {
     },
     image : async (req, res) => {
         try {
-            console.log('hello');
-            const data = req.body.param;
-            console.log({...data});
-            
-            
-    } catch (error) {   console.log(error)};
-    },
-    users : async (req, res) => {
-        try {
-        const data = req.body.param;
-        console.log({...data});   
-        const result = await user.editItems();
-        location.reload();
+            const data = req.body;
+            console.log(data);
+            const user = new User(data); 
+            // const result = await user.uploadImg();
+        } catch (error) {   console.log(error)};
+        },
+    // users : async (req, res) => {
+    //     try {
+    //     const data = req.body.param;
+    //     console.log({...data});   
+    //     const result = await user.editItems();
+    //     location.reload();
 
 
-    } catch (error) {   console.log(error)};
-    }
+    // } catch (error) {   console.log(error)};
+    // }
 };
 
 

@@ -21,26 +21,21 @@ socket.on('connect', () => {
 });
 
 imgBtn.addEventListener('click', () => {
-    console.log(file.value);
+    console.log(file.files[0]);
     const param = {
-        img : file.value,
-        id : imgID.value
+        img : file.files[0],
+        id : imgID.value,
+        date : today.getDate()
     }
-    fetch('/image', {
-        method: 'POST',
+    fetch("/image", {
+        method: "POST",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
         },
         body: JSON.stringify({
             param: param,
         }),
     })
-    .then((res) => {
-        return res.json();
-    })
-    .then((res) => {
-        console.log(res.data);
-    });
 })
 
 
@@ -76,7 +71,7 @@ const editHandler = (data) => {
     })
     .then((res) => {
         console.log("hi");
-        // window.location.reload();
+        window.location.reload();
     });
 }
 
@@ -133,8 +128,8 @@ const sendHandler = () => {
     });
 }
 
-const imageHandler = () => {
-    
+const imageHandler = (param) => {
+    console.log(param);
     fetch("/image", {
         method: "POST",
         headers: {
@@ -160,21 +155,21 @@ const usersHandler = () => {
             data: today.getDay(),
         });
     }
-    fetch('/users', {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            param: param,
-        }),
-    })
-    .then((res) => {
-        return res.json();
-    })
-    .then((res) => {
-        console.log(res.data);
-    });
+    // fetch('/users', {
+    //     method: 'POST',
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //         param: param,
+    //     }),
+    // })
+    // .then((res) => {
+    //     return res.json();
+    // })
+    // .then((res) => {
+    //     console.log(res.data);
+    // });
 }
 
 
