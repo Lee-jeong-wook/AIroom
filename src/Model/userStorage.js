@@ -2,9 +2,22 @@ const firebase = require("../db/db");
 const firestoreDB = require("firebase/firestore");
 const db = firestoreDB.getFirestore(firebase);
 
+const multer = require('multer');
+
 const firebaseStorage = require("firebase/storage")
 const storage = firebaseStorage.getStorage();
 // const uploadImg = firebaseStorage.uploadBytes();
+
+const imgStorage = multer.diskStorage({
+  destination:(req, file, callback) => {
+    callback(null, 'src/public/images');
+  },
+  filename: (req, file, callback) => {
+    const ext = path.extname(file.originalname);
+    const filename = Date.now() + ext;
+    callback(null, filename); // 이미지 파일 이름 설정
+  },
+})
 
 class UserStorage {
   constructor(body) {

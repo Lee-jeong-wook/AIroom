@@ -20,6 +20,10 @@ socket.on('connect', () => {
     console.log('서버와 연결 성공');
 });
 
+
+/**
+ * 이미지 전송 버튼이 클릭되면 이미지를 저장시키는 함수(개발중)
+ */
 imgBtn.addEventListener('click', () => {
     console.log(file.files[0]);
     const param = {
@@ -32,13 +36,16 @@ imgBtn.addEventListener('click', () => {
         headers: {
             "Content-Type": "multipart/form-data",
         },
+        //https://ko.javascript.info/formdata 참고
         body: JSON.stringify({
             param: param,
         }),
     })
 })
 
-
+/**
+ * 학번과 시간을 받고 변경시킬 데이터를 서버에 보내는 함수
+ */
 editBtn.addEventListener('click', () => {
     const data = {
         editID : editID.value,
@@ -46,6 +53,9 @@ editBtn.addEventListener('click', () => {
     }
     editHandler(data);
 })
+/**
+ * 변경 시간을 현재 시간으로 바꿔서 서버에 보내는 함수
+ */
 leaveBtn.addEventListener('click', () => {
     const data = {
         editID : editID.value,
@@ -75,6 +85,10 @@ const editHandler = (data) => {
     });
 }
 
+/**
+ * 
+ * @param {} data 웹 소켓으로 데이터를 받아와서 리스트 생성시키는 함수
+ */
 const listHandler = (data) => {
     console.log("hi");
     const container = document.createElement('div');
@@ -95,6 +109,9 @@ const listHandler = (data) => {
     container.appendChild(StudentEnd);
 }
 
+/**
+ * 전송버튼이 클릭되면 정보를 서버와 소켓으로 보내는 함수
+ */
 const sendHandler = () => {
     console.log(name.length);
     let param = [];
@@ -128,53 +145,14 @@ const sendHandler = () => {
     });
 }
 
-const imageHandler = (param) => {
-    console.log(param);
-    fetch("/image", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            param: param,
-        }),
-    })
-}
-
-const usersHandler = () => {
-    console.log(name.length);
-    let param = [];
-    for(let i = 0; i < name.length; i++) {
-        param.push({
-            id: Math.floor(Math.random() * 100000),
-            StudentID: StudentID[i].value,
-            name: name[i].value,
-            startTime: startTime[i].value,
-            endTime: endTime[i].value,
-            isLast: true,
-            data: today.getDay(),
-        });
-    }
-    // fetch('/users', {
-    //     method: 'POST',
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //         param: param,
-    //     }),
-    // })
-    // .then((res) => {
-    //     return res.json();
-    // })
-    // .then((res) => {
-    //     console.log(res.data);
-    // });
-}
-
-
+/**
+ * 전송버튼이 클릭되면 sedHandler 호출
+ */
 sendBtn.addEventListener('click', sendHandler);
 
+/**
+ * 소켓에서 데이터를 받으면 listHandler 호출
+ */
 socket.on('chatting', (data) => {
     const cleanData = JSON.parse(JSON.stringify(data));
     console.log('받은 데이터:', cleanData);
