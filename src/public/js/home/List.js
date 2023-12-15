@@ -107,6 +107,14 @@ const listHandler = (data) => {
     container.appendChild(StudentName);
     container.appendChild(StudentStart);
     container.appendChild(StudentEnd);
+
+    const curTime = `${today.getHours()}:${today.getMinutes()}`;
+    const comTime = curTime.split(":");
+    const userTime = data[0].endTime.split(":");
+    console.log(userTime);
+    if (comTime[0] < userTime[0]) return;
+    if (comTime[1] < userTime[1]) return;
+    container.style.backgroundColor = "#ccc";
 }
 
 /**

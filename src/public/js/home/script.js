@@ -38,7 +38,8 @@ const endHandler = () => {
     endTimes.forEach((endtime) => {
         const userTime = endtime.innerText.split(":");
         if (comTime[0] < userTime[0]) return;
-        if (comTime[1] < userTime[1]) return;
+        if (comTime[0] < userTime[0] && comTime[1] < userTime[1]) return;
+        console.log(endtime.innerText);
         endtime.parentElement.style.backgroundColor = "#ccc";
     })
 }
